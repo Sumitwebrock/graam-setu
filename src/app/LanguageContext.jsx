@@ -36,6 +36,11 @@ export function LanguageProvider({ children }) {
     } catch {
       // ignore storage errors
     }
+
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = language;
+      document.documentElement.setAttribute("data-app-language", language);
+    }
   }, [language]);
 
   return (

@@ -496,11 +496,16 @@ const TRANSLATIONS = {
   },
 };
 
+export const AVAILABLE_TRANSLATION_CODES = Object.keys(TRANSLATIONS);
+
+export function hasTranslation(language, key) {
+  return Boolean(TRANSLATIONS[language]?.[key]);
+}
+
 export function t(language, key, vars = {}) {
   const fromSelected = TRANSLATIONS[language]?.[key];
-  const fallbackHindi = language !== "en" ? TRANSLATIONS.hi[key] : undefined;
-  const fallbackEnglish = TRANSLATIONS.en[key] || key;
-  let value = fromSelected || fallbackHindi || fallbackEnglish;
+  const fallbackEnglish = TRANSLATIONS.en[key];
+  let value = fromSelected || fallbackEnglish || key;
 
   Object.entries(vars).forEach(([varName, varValue]) => {
     value = value.replaceAll(`{{${varName}}}`, String(varValue));

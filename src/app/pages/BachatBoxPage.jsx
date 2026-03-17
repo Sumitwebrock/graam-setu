@@ -186,11 +186,11 @@ export default function BachatBoxPage() {
             <div>
               <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-[#E8F5E9] px-3 py-1 text-xs text-[#1B7F3A]">
                 <PiggyBank className="h-4 w-4" />
-                {language !== "en" ? "सूक्ष्म बचत सहायक" : "Micro Savings Assistant"}
+                {language === "hi" ? "सूक्ष्म बचत सहायक" : "Micro Savings Assistant"}
               </div>
               <h1 className="mb-2 text-3xl md:text-5xl text-gray-900">BachatBox</h1>
               <p className="text-base md:text-lg text-gray-600">
-                {language !== "en" ? "रोज़ थोड़ा बचाओ, कल मज़बूत बनाओ।" : "Save a little every day, build a stronger tomorrow."}
+                {language === "hi" ? "रोज़ थोड़ा बचाओ, कल मज़बूत बनाओ।" : "Save a little every day, build a stronger tomorrow."}
               </p>
             </div>
             <div className="grid grid-cols-3 gap-2">
@@ -221,11 +221,11 @@ export default function BachatBoxPage() {
             <div className="mb-3 flex items-center gap-2">
               <Target className="h-5 w-5 text-[#1B7F3A]" />
               <h2 className="text-xl text-gray-900">
-                {language !== "en" ? "सक्रिय बचत लक्ष्य" : "Active Savings Goals"}
+                {language === "hi" ? "सक्रिय बचत लक्ष्य" : "Active Savings Goals"}
               </h2>
             </div>
             <p className="mt-1 text-sm text-gray-600">
-              {language !== "en"
+              {language === "hi"
                 ? "अपने लक्ष्यों को देखें, बचत जोड़ें और प्रगति देखें।"
                 : "Track goals, add savings, and monitor progress."}
             </p>

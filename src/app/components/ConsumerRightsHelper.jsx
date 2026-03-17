@@ -26,7 +26,7 @@ export default function ConsumerRightsHelper() {
       } catch (err) {
         setError(
           err.message ||
-            (language !== "en"
+            (language === "hi"
               ? "उपभोक्ता जानकारी नहीं मिली।"
               : "Could not load consumer help information.")
         );
@@ -44,10 +44,10 @@ export default function ConsumerRightsHelper() {
         <ShoppingBag className="w-8 h-8 text-[#2196F3]" />
         <div>
           <h2 className="text-xl text-gray-900">
-            {language !== "en" ? "उपभोक्ता अधिकार" : "Consumer Rights"} / उपभोक्ता अधिकार
+            {language === "hi" ? "उपभोक्ता अधिकार" : "Consumer Rights"} / उपभोक्ता अधिकार
           </h2>
           <p className="text-gray-600 mt-1">
-            {language !== "en"
+            {language === "hi"
               ? "अगर सामान, दवा या सेवा खराब या धोखाधड़ी वाली हो तो क्या करें।"
               : "What to do if a product, medicine, or service is defective or fraudulent."}
           </p>
@@ -62,7 +62,7 @@ export default function ConsumerRightsHelper() {
             className={`px-4 py-3 rounded-xl border ${selectedIssue === issue.key ? "bg-[#2196F3] text-white border-[#2196F3]" : "bg-[#F8FAF9] border-gray-200 text-gray-700"}`}
           >
             <div className="text-sm font-medium">
-              {language !== "en" ? issue.labelHindi : issue.label}
+              {language === "hi" ? issue.labelHindi : issue.label}
             </div>
             <div className={`text-xs ${selectedIssue === issue.key ? "text-white/80" : "text-gray-500"}`}>{issue.labelHindi}</div>
           </button>
@@ -71,7 +71,7 @@ export default function ConsumerRightsHelper() {
 
       {loading && (
         <div className="rounded-xl bg-[#F8FAF9] p-4 text-gray-600">
-          {language !== "en" ? "मार्गदर्शन लोड हो रहा है..." : "Loading guidance..."}
+          {language === "hi" ? "मार्गदर्शन लोड हो रहा है..." : "Loading guidance..."}
         </div>
       )}
       {error && <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-red-700">{error}</div>}
@@ -80,27 +80,27 @@ export default function ConsumerRightsHelper() {
         <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
           <div className="rounded-2xl bg-gradient-to-br from-[#E3F2FD] to-white p-6">
             <h3 className="text-base text-gray-900 mb-3">
-              {language !== "en"
+              {language === "hi"
                 ? issueData.issueHindi
                 : issueData.issueEnglish || issueData.issueHindi}
             </h3>
             <p className="text-gray-700 mb-4">
-              {language !== "en"
+              {language === "hi"
                 ? issueData.explanationHindi
                 : issueData.explanationEnglish || issueData.explanationHindi}
             </p>
             <div className="rounded-xl bg-white p-4 border border-[#2196F3]/10 mb-4">
               <div className="text-sm text-[#2196F3] mb-1">
-                {language !== "en" ? "आपका अधिकार" : "Your right"} / आपका अधिकार
+                {language === "hi" ? "आपका अधिकार" : "Your right"} / आपका अधिकार
               </div>
               <p className="text-gray-800">
-                {language !== "en"
+                {language === "hi"
                   ? issueData.rightsHindi
                   : issueData.rightsEnglish || issueData.rightsHindi}
               </p>
             </div>
             <div className="space-y-3">
-              {(language !== "en" ? issueData.stepsHindi : issueData.stepsEnglish || issueData.stepsHindi)?.map((step, index) => (
+              {(language === "hi" ? issueData.stepsHindi : issueData.stepsEnglish || issueData.stepsHindi)?.map((step, index) => (
                 <div key={`${step}-${index}`} className="rounded-xl bg-white p-4 border border-gray-100 text-gray-700">
                   {index + 1}. {step}
                 </div>
@@ -110,13 +110,13 @@ export default function ConsumerRightsHelper() {
 
           <div className="rounded-2xl bg-gradient-to-br from-[#FFF3E0] to-white p-6 flex flex-col justify-center">
             <div className="text-sm text-[#FF7A00] mb-2">
-              {language !== "en" ? "उपभोक्ता हेल्पलाइन" : "Consumer Helpline"}
+              {language === "hi" ? "उपभोक्ता हेल्पलाइन" : "Consumer Helpline"}
             </div>
             <a href={`tel:${issueData.helpline}`} className="text-xl text-[#FF7A00] mb-4 hover:underline">
               {issueData.helpline}
             </a>
             <p className="text-gray-700">
-              {language !== "en"
+              {language === "hi"
                 ? "बिल, फोटो, रैपर, स्क्रीनशॉट और चैट रिकॉर्ड संभालकर रखें। यही आपकी शिकायत को मजबूत बनाते हैं।"
                 : "Keep the bill, photos, wrapper, screenshots and chat records safe. These strengthen your complaint."}
             </p>

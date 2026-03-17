@@ -29,7 +29,7 @@ export default function FraudAlertBoard({ district, state }) {
       } catch (err) {
         setError(
           err.message ||
-            (language !== "en"
+            (language === "hi"
               ? "अभी धोखाधड़ी अलर्ट उपलब्ध नहीं हैं।"
               : "Fraud alerts not available right now.")
         );
@@ -52,7 +52,7 @@ export default function FraudAlertBoard({ district, state }) {
         state,
       });
       setSuccessMessage(
-        language !== "en"
+        language === "hi"
           ? "रिपोर्ट जमा हो गई है। तुरंत मदद के लिए 1930 पर कॉल करें।"
           : "Report submitted. For urgent cases, call 1930."
       );
@@ -62,7 +62,7 @@ export default function FraudAlertBoard({ district, state }) {
     } catch (err) {
       setError(
         err.message ||
-          (language !== "en"
+          (language === "hi"
             ? "रिपोर्ट जमा नहीं हो सकी।"
             : "Could not submit the report.")
       );
@@ -75,10 +75,10 @@ export default function FraudAlertBoard({ district, state }) {
         <Shield className="w-8 h-8 text-[#FF7A00]" />
         <div>
           <h2 className="text-xl text-gray-900">
-            {language !== "en" ? "धोखाधड़ी चेतावनी" : "Fraud Alert Board"} / धोखाधड़ी चेतावनी
+            {language === "hi" ? "धोखाधड़ी चेतावनी" : "Fraud Alert Board"} / धोखाधड़ी चेतावनी
           </h2>
           <p className="text-gray-600 mt-1">
-            {language !== "en"
+            {language === "hi"
               ? `${district || "आपके जिले"} के लिए अलर्ट देखें और रिपोर्ट दर्ज करें।`
               : `View alerts for ${district || "your district"} and submit a report.`}
           </p>
@@ -89,7 +89,7 @@ export default function FraudAlertBoard({ district, state }) {
         <div className="space-y-4">
           {loading && (
             <div className="rounded-xl bg-[#F8FAF9] p-4 text-gray-600">
-              {language !== "en" ? "अलर्ट लोड हो रहे हैं..." : "Loading alerts..."}
+              {language === "hi" ? "अलर्ट लोड हो रहे हैं..." : "Loading alerts..."}
             </div>
           )}
           {!loading && alerts.map((alert) => (
@@ -108,12 +108,12 @@ export default function FraudAlertBoard({ district, state }) {
 
         <form onSubmit={handleSubmit} className="rounded-2xl bg-gradient-to-br from-[#F8FAF9] to-white p-6 border border-gray-200">
           <h3 className="text-base text-gray-900 mb-4">
-            {language !== "en" ? "धोखाधड़ी रिपोर्ट" : "Fraud Report"} / रिपोर्ट भेजें
+            {language === "hi" ? "धोखाधड़ी रिपोर्ट" : "Fraud Report"} / रिपोर्ट भेजें
           </h3>
           <div className="space-y-4">
             <label className="block">
               <div className="text-sm text-gray-700 mb-2">
-                {language !== "en" ? "धोखाधड़ी का प्रकार" : "Fraud Type"}
+                {language === "hi" ? "धोखाधड़ी का प्रकार" : "Fraud Type"}
               </div>
               <select value={formData.fraudType} onChange={(e) => setFormData((prev) => ({ ...prev, fraudType: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:border-[#FF7A00]">
                 <option>Loan App Fraud</option>
@@ -124,20 +124,20 @@ export default function FraudAlertBoard({ district, state }) {
             </label>
             <label className="block">
               <div className="text-sm text-gray-700 mb-2">
-                {language !== "en" ? "ज़िला" : "District"} / ज़िला
+                {language === "hi" ? "ज़िला" : "District"} / ज़िला
               </div>
               <input
                 value={formData.district}
                 onChange={(e) => setFormData((prev) => ({ ...prev, district: e.target.value }))}
                 className="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:border-[#FF7A00]"
                 placeholder={
-                  language !== "en" ? "अपना जिला लिखें" : "Enter your district"
+                  language === "hi" ? "अपना जिला लिखें" : "Enter your district"
                 }
               />
             </label>
             <label className="block">
               <div className="text-sm text-gray-700 mb-2">
-                {language !== "en" ? "विवरण" : "Description"}
+                {language === "hi" ? "विवरण" : "Description"}
               </div>
               <textarea
                 value={formData.description}
@@ -145,7 +145,7 @@ export default function FraudAlertBoard({ district, state }) {
                 rows={4}
                 className="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:border-[#FF7A00]"
                 placeholder={
-                  language !== "en"
+                  language === "hi"
                     ? "क्या हुआ, कहाँ और कौन शामिल था, संक्षेप में लिखें"
                     : "What happened, where, and who was involved?"
                 }
@@ -154,10 +154,10 @@ export default function FraudAlertBoard({ district, state }) {
             {successMessage && <div className="rounded-xl bg-green-50 border border-green-200 p-3 text-green-700 text-sm">{successMessage}</div>}
             {error && <div className="rounded-xl bg-red-50 border border-red-200 p-3 text-red-700 text-sm">{error}</div>}
             <button type="submit" className="w-full bg-[#FF7A00] text-white py-3 rounded-xl hover:bg-[#e66d00] transition-all">
-              {language !== "en" ? "रिपोर्ट जमा करें" : "Submit report"} / रिपोर्ट जमा करें
+              {language === "hi" ? "रिपोर्ट जमा करें" : "Submit report"} / रिपोर्ट जमा करें
             </button>
             <a href="tel:1930" className="block w-full text-center bg-[#1B7F3A] text-white py-3 rounded-xl hover:bg-[#155d2b] transition-all">
-              {language !== "en" ? "1930 पर कॉल करें" : "Call 1930"}
+              {language === "hi" ? "1930 पर कॉल करें" : "Call 1930"}
             </a>
           </div>
         </form>

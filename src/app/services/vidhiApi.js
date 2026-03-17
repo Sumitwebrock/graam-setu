@@ -38,8 +38,9 @@ export const getVidhiUserProfile = async (userId) => {
   return parseResponse(response);
 };
 
-export const fetchSituationRights = async (type) => {
-  const response = await fetch(`${API_BASE_URL}/api/rights/situation/${encodeURIComponent(type)}?lang=hi`, {
+export const fetchSituationRights = async (type, language = "en") => {
+  const params = new URLSearchParams({ lang: language });
+  const response = await fetch(`${API_BASE_URL}/api/rights/situation/${encodeURIComponent(type)}?${params.toString()}`, {
     method: "GET",
   });
 
@@ -106,7 +107,7 @@ export const fetchLegalAidCenters = async (state, district) => {
   return parseResponse(response);
 };
 
-export const askLegalAssistant = async (query, language = "hi") => {
+export const askLegalAssistant = async (query, language = "en") => {
   const response = await fetch(`${API_BASE_URL}/api/chatbot/query`, {
     method: "POST",
     headers: getAuthHeaders(true),

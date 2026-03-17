@@ -279,7 +279,7 @@ export default function LandingPage() {
                 >
                   <Icon className="w-5 h-5" style={{ color: module.color }} />
                   <span className="text-sm font-medium">
-                    {language !== "en" ? module.titleHindi : module.title}
+                    {language === "hi" ? module.titleHindi : module.title}
                   </span>
                 </Link>
               );

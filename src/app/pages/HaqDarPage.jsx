@@ -150,7 +150,7 @@ export default function HaqDarPage() {
             HaqDar
           </h1>
           <p className="text-xl md:text-2xl text-gray-600">
-            {language !== "en"
+            {language === "hi"
               ? "हक़दार - आपकी सरकारी योजना खोजक"
               : "HaqDar – your government scheme finder"}
           </p>
@@ -161,28 +161,28 @@ export default function HaqDarPage() {
           <div className="bg-gradient-to-br from-[#1B7F3A] to-[#4CAF50] rounded-2xl p-6 text-white shadow-lg">
             <div className="flex items-center gap-3 mb-4">
               <Gift className="w-8 h-8" />
-              <span className="text-lg">{language !== "en" ? "योग्य योजनाएँ" : "Eligible Schemes"}</span>
+              <span className="text-lg">{language === "hi" ? "योग्य योजनाएँ" : "Eligible Schemes"}</span>
             </div>
             <div className="text-5xl mb-2">{eligibleSchemes.length}</div>
             <p className="text-[#E8F5E9]">
-              {language !== "en" ? "योजनाओं के लिए योग्य" : "Schemes you are eligible for"}
+              {language === "hi" ? "योजनाओं के लिए योग्य" : "Schemes you are eligible for"}
             </p>
           </div>
           <div className="bg-gradient-to-br from-[#FF7A00] to-[#FFA726] rounded-2xl p-6 text-white shadow-lg">
             <div className="flex items-center gap-3 mb-4">
               <IndianRupee className="w-8 h-8" />
-              <span className="text-lg">{language !== "en" ? "कुल लाभ" : "Total Benefits"}</span>
+              <span className="text-lg">{language === "hi" ? "कुल लाभ" : "Total Benefits"}</span>
             </div>
             <div className="text-lg md:text-xl mb-2">{totalBenefitsLabel}</div>
-            <p className="text-white/80">{language !== "en" ? "वार्षिक लाभ" : "Per year (approx.)"}</p>
+            <p className="text-white/80">{language === "hi" ? "वार्षिक लाभ" : "Per year (approx.)"}</p>
           </div>
           <div className="bg-gradient-to-br from-[#E91E63] to-[#F06292] rounded-2xl p-6 text-white shadow-lg">
             <div className="flex items-center gap-3 mb-4">
               <AlertTriangle className="w-8 h-8" />
-              <span className="text-lg">{language !== "en" ? "लंबित कार्य" : "Pending Actions"}</span>
+              <span className="text-lg">{language === "hi" ? "लंबित कार्य" : "Pending Actions"}</span>
             </div>
             <div className="text-5xl mb-2">{partiallyEligibleSchemes.length}</div>
-            <p className="text-white/80">{language !== "en" ? "आवेदन करें" : "Schemes where you must apply"}</p>
+            <p className="text-white/80">{language === "hi" ? "आवेदन करें" : "Schemes where you must apply"}</p>
           </div>
         </div>
 
@@ -204,10 +204,10 @@ export default function HaqDarPage() {
             <AlertTriangle className="w-8 h-8 text-[#FF7A00] flex-shrink-0" />
             <div>
               <h2 className="text-2xl md:text-3xl mb-2 text-gray-900">
-                {language !== "en" ? "छूटे हुए लाभ की सूचना" : "Missing Benefits Alert!"}
+                {language === "hi" ? "छूटे हुए लाभ की सूचना" : "Missing Benefits Alert!"}
               </h2>
               <p className="text-lg text-gray-700">
-                {language !== "en"
+                {language === "hi"
                   ? "आंशिक रूप से योग्य योजनाएँ – प्रोफ़ाइल पूरा करें"
                   : "Partially eligible schemes that need profile completion"}
               </p>
@@ -232,7 +232,7 @@ export default function HaqDarPage() {
                     onClick={() => openOfficialSchemeSite(benefit.applyUrl)}
                     className="bg-[#FF7A00] text-white px-6 py-3 rounded-xl hover:bg-[#e66d00] transition-all whitespace-nowrap"
                   >
-                    {language !== "en" ? "अभी आवेदन करें" : "Apply Now"}
+                    {language === "hi" ? "अभी आवेदन करें" : "Apply Now"}
                   </button>
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function HaqDarPage() {
         {/* Eligible Schemes */}
         <div className="mb-8">
           <h2 className="text-2xl md:text-3xl mb-6 text-gray-900">
-            {language !== "en" ? "आपकी योजना पात्रता" : "Your Scheme Eligibility"}
+            {language === "hi" ? "आपकी योजना पात्रता" : "Your Scheme Eligibility"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {schemeCards.map((scheme, index) => (
@@ -286,7 +286,7 @@ export default function HaqDarPage() {
                 <h3 className="text-xl mb-2 text-gray-900">{scheme.name}</h3>
                 {scheme.nameHindi && (
                   <p className="text-gray-600 text-sm mb-3">
-                    {language !== "en" ? scheme.nameHindi : scheme.name}
+                    {language === "hi" ? scheme.nameHindi : scheme.name}
                   </p>
                 )}
                 <p className="text-gray-700 mb-4">{scheme.description}</p>
@@ -305,7 +305,7 @@ export default function HaqDarPage() {
                     onClick={() => openOfficialSchemeSite(scheme.applyUrl)}
                     className="w-full bg-[#1B7F3A] text-white py-3 rounded-xl hover:bg-[#155d2b] transition-all flex items-center justify-center gap-2"
                   >
-                    {language !== "en" ? "अभी आवेदन करें" : "Apply Now"}
+                    {language === "hi" ? "अभी आवेदन करें" : "Apply Now"}
                     <ArrowRight className="w-5 h-5" />
                   </button>
                 )}
@@ -333,7 +333,7 @@ export default function HaqDarPage() {
         {/* Payment Timeline */}
         <div className="bg-white rounded-2xl p-6 md:p-8 shadow-md">
           <h2 className="text-2xl md:text-3xl mb-6 text-gray-900">
-            {language !== "en" ? "भुगतान समयरेखा" : "Payment Timeline"}
+            {language === "hi" ? "भुगतान समयरेखा" : "Payment Timeline"}
           </h2>
           {paymentTimeline.length === 0 && (
             <div className="text-gray-600">No payment timeline available yet.</div>

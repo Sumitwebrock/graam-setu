@@ -19,7 +19,7 @@ export default function LegalAidLocator({ state, district }) {
       } catch (err) {
         setError(
           err.message ||
-            (language !== "en"
+            (language === "hi"
               ? "नजदीकी सहायता केंद्र लोड नहीं हो सके।"
               : "Could not load nearby centers.")
         );
@@ -37,10 +37,10 @@ export default function LegalAidLocator({ state, district }) {
         <MapPin className="w-8 h-8 text-[#1B7F3A]" />
         <div>
           <h2 className="text-xl text-gray-900">
-            {language !== "en" ? "सहायता केंद्र" : "Legal Aid Locator"} / सहायता केंद्र
+            {language === "hi" ? "सहायता केंद्र" : "Legal Aid Locator"} / सहायता केंद्र
           </h2>
           <p className="text-gray-600 mt-1">
-            {language !== "en"
+            {language === "hi"
               ? "अपने ज़िले और राज्य के आधार पर नज़दीकी कानूनी सहायता केंद्र खोजें।"
               : "Find nearby legal help centers based on your district and state."}
           </p>
@@ -49,7 +49,7 @@ export default function LegalAidLocator({ state, district }) {
 
       {loading && (
         <div className="rounded-xl bg-[#F8FAF9] p-4 text-gray-600">
-          {language !== "en" ? "केंद्र खोजे जा रहे हैं..." : "Finding centers..."}
+          {language === "hi" ? "केंद्र खोजे जा रहे हैं..." : "Finding centers..."}
         </div>
       )}
       {error && <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-red-700">{error}</div>}

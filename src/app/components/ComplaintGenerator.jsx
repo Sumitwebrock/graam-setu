@@ -32,9 +32,9 @@ export default function ComplaintGenerator({ profile, defaultProblemType }) {
   }, [defaultProblemType]);
 
   const complaintText = useMemo(() => {
-    const today = new Date().toLocaleDateString(language !== "en" ? "hi-IN" : "en-IN");
+    const today = new Date().toLocaleDateString(language === "hi" ? "hi-IN" : "en-IN");
     const problemLabel = PROBLEM_LABELS[problemType] || "कानूनी शिकायत";
-    if (language !== "en") {
+    if (language === "hi") {
       return `सेवा में,\nसंबंधित अधिकारी महोदय/महोदया\nजिला: ${district || "________"}\nदिनांक: ${today}\n\nविषय: ${problemLabel} के संबंध में शिकायत\n\nमहोदय/महोदया,\nमैं ${name || "________"} निवासी जिला ${district || "________"} हूँ। मुझे ${problemLabel} से संबंधित समस्या का सामना करना पड़ रहा है। कृपया मेरी शिकायत दर्ज कर उचित कार्यवाही करें।\n\nमैंने उपलब्ध दस्तावेज और विवरण संलग्न किए हैं। कृपया मुझे शिकायत संख्या और आगे की प्रक्रिया की जानकारी दें।\n\nधन्यवाद।\n\nभवदीय,\n${name || "________"}`;
     }
     return `To,\nThe Concerned Officer\nDistrict: ${district || "________"}\nDate: ${today}\n\nSubject: Complaint regarding ${problemLabel}\n\nSir/Madam,\nI, ${name || "________"}, resident of district ${district || "________"}, am facing an issue related to ${problemLabel}. I request you to kindly register my complaint and take appropriate action.\n\nI have attached the available documents and details. Please share the complaint number and next steps with me.\n\nThank you.\n\nSincerely,\n${name || "________"}`;
@@ -44,12 +44,12 @@ export default function ComplaintGenerator({ profile, defaultProblemType }) {
     try {
       await navigator.clipboard.writeText(complaintText);
       setCopySuccess(
-        language !== "en" ? "क्लिपबोर्ड पर कॉपी हो गया।" : "Copied to clipboard."
+        language === "hi" ? "क्लिपबोर्ड पर कॉपी हो गया।" : "Copied to clipboard."
       );
       window.setTimeout(() => setCopySuccess(""), 2000);
     } catch {
       setCopySuccess(
-        language !== "en" ? "कॉपी नहीं हो सका।" : "Copy failed."
+        language === "hi" ? "कॉपी नहीं हो सका।" : "Copy failed."
       );
       window.setTimeout(() => setCopySuccess(""), 2000);
     }
@@ -77,10 +77,10 @@ export default function ComplaintGenerator({ profile, defaultProblemType }) {
         <Download className="w-8 h-8 text-[#673AB7]" />
         <div>
           <h2 className="text-xl text-gray-900">
-            {language !== "en" ? "शिकायत पत्र" : "Complaint Generator"} / शिकायत पत्र
+            {language === "hi" ? "शिकायत पत्र" : "Complaint Generator"} / शिकायत पत्र
           </h2>
           <p className="text-gray-600 mt-1">
-            {language !== "en"
+            {language === "hi"
               ? "अपनी जानकारी भरें और एक तैयार शिकायत पत्र बनाएं।"
               : "Fill your details to generate a ready-to-use complaint letter."}
           </p>
@@ -91,13 +91,13 @@ export default function ComplaintGenerator({ profile, defaultProblemType }) {
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder={language !== "en" ? "नाम" : "Name"}
+          placeholder={language === "hi" ? "नाम" : "Name"}
           className="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:border-[#673AB7]"
         />
         <input
           value={district}
           onChange={(e) => setDistrict(e.target.value)}
-          placeholder={language !== "en" ? "ज़िला" : "District"}
+          placeholder={language === "hi" ? "ज़िला" : "District"}
           className="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:border-[#673AB7]"
         />
         <select value={problemType} onChange={(e) => setProblemType(e.target.value)} className="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:border-[#673AB7]">
@@ -116,15 +116,15 @@ export default function ComplaintGenerator({ profile, defaultProblemType }) {
       <div className="grid gap-3 sm:grid-cols-3">
         <button onClick={handleDownloadPdf} className="bg-[#673AB7] text-white py-3 rounded-xl hover:bg-[#5E35B1] transition-all flex items-center justify-center gap-2">
           <Download className="w-4 h-4" />
-          {language !== "en" ? "पीडीएफ डाउनलोड करें" : "Download PDF"}
+          {language === "hi" ? "पीडीएफ डाउनलोड करें" : "Download PDF"}
         </button>
         <button onClick={handlePrint} className="bg-[#FF7A00] text-white py-3 rounded-xl hover:bg-[#e66d00] transition-all flex items-center justify-center gap-2">
           <Printer className="w-4 h-4" />
-          {language !== "en" ? "प्रिंट करें" : "Print"}
+          {language === "hi" ? "प्रिंट करें" : "Print"}
         </button>
         <button onClick={handleCopy} className="bg-[#1B7F3A] text-white py-3 rounded-xl hover:bg-[#155d2b] transition-all flex items-center justify-center gap-2">
           <Copy className="w-4 h-4" />
-          {language !== "en" ? "टेक्स्ट कॉपी करें" : "Copy Text"}
+          {language === "hi" ? "टेक्स्ट कॉपी करें" : "Copy Text"}
         </button>
       </div>
     </div>

@@ -32,7 +32,7 @@ export default function MinimumWageChecker({ defaultState, defaultOccupation }) 
       } catch (err) {
         setError(
           err.message ||
-            (language !== "en"
+            (language === "hi"
               ? "मजदूरी जानकारी नहीं मिली।"
               : "Could not load wage information.")
         );
@@ -50,10 +50,10 @@ export default function MinimumWageChecker({ defaultState, defaultOccupation }) 
         <Scale className="w-8 h-8 text-[#d4183d]" />
         <div>
           <h2 className="text-xl text-gray-900">
-            {language !== "en" ? "न्यूनतम मजदूरी" : "Minimum Wage Checker"} / न्यूनतम मजदूरी
+            {language === "hi" ? "न्यूनतम मजदूरी" : "Minimum Wage Checker"} / न्यूनतम मजदूरी
           </h2>
           <p className="text-gray-600 mt-1">
-            {language !== "en"
+            {language === "hi"
               ? "राज्य और काम चुनें ताकि अनुमानित न्यूनतम मजदूरी देख सकें।"
               : "Select state and occupation to see an estimated minimum wage."}
           </p>
@@ -63,7 +63,7 @@ export default function MinimumWageChecker({ defaultState, defaultOccupation }) 
       <div className="grid gap-4 md:grid-cols-2 mb-6">
         <label className="block">
           <div className="text-sm text-gray-700 mb-2">
-            {language !== "en" ? "राज्य" : "State"} / राज्य
+            {language === "hi" ? "राज्य" : "State"} / राज्य
           </div>
           <select value={state} onChange={(e) => setState(e.target.value)} className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 focus:outline-none focus:border-[#d4183d]">
             {STATES.map((item) => (
@@ -73,7 +73,7 @@ export default function MinimumWageChecker({ defaultState, defaultOccupation }) 
         </label>
         <label className="block">
           <div className="text-sm text-gray-700 mb-2">
-            {language !== "en" ? "काम" : "Occupation"} / काम
+            {language === "hi" ? "काम" : "Occupation"} / काम
           </div>
           <select value={occupation} onChange={(e) => setOccupation(e.target.value)} className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 focus:outline-none focus:border-[#d4183d]">
             {OCCUPATIONS.map((item) => (
@@ -85,7 +85,7 @@ export default function MinimumWageChecker({ defaultState, defaultOccupation }) 
 
       {loading && (
         <div className="rounded-xl bg-white p-4 text-gray-600">
-          {language !== "en" ? "मजदूरी जानकारी लोड हो रही है..." : "Loading wage data..."}
+          {language === "hi" ? "मजदूरी जानकारी लोड हो रही है..." : "Loading wage data..."}
         </div>
       )}
       {error && <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-red-700">{error}</div>}
@@ -112,15 +112,15 @@ export default function MinimumWageChecker({ defaultState, defaultOccupation }) 
           </div>
           <div className="bg-white p-6 rounded-xl flex flex-col justify-center">
             <h3 className="text-base text-gray-900 mb-3">
-              {language !== "en" ? "सरल समझ" : "Easy explanation (सरल समझ)"}
+              {language === "hi" ? "सरल समझ" : "Easy explanation (सरल समझ)"}
             </h3>
             <p className="text-gray-700 mb-4">
-              {language !== "en"
+              {language === "hi"
                 ? wageData.explanationHindi
                 : wageData.explanationEnglish || wageData.explanationHindi}
             </p>
             <p className="text-sm text-gray-500">
-              {language !== "en" ? "स्रोत" : "Source"}: {wageData.source}
+              {language === "hi" ? "स्रोत" : "Source"}: {wageData.source}
             </p>
           </div>
         </div>

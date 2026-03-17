@@ -16,12 +16,12 @@ export default function ProfileLegalHighlights({ profile, recommendations, sugge
         <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
           <div>
             <h2 className="text-xl text-gray-900">
-              {language !== "en"
+              {language === "hi"
                 ? "प्रोफाइल-आधारित कानूनी मदद"
                 : "Profile-based legal help"} (प्रोफाइल-आधारित मदद)
             </h2>
             <p className="text-gray-600 mt-2">
-              {language !== "en"
+              {language === "hi"
                 ? "आपकी प्रोफाइल और ज़िले के आधार पर तैयार।"
                 : "Prepared using your profile and district."}
             </p>
@@ -47,13 +47,13 @@ export default function ProfileLegalHighlights({ profile, recommendations, sugge
 
       <div className="bg-gradient-to-br from-[#E8F5E9] to-white rounded-2xl p-6 md:p-8 shadow-md border border-[#1B7F3A]/15">
         <h2 className="text-lg text-gray-900 mb-4">
-          {language !== "en" ? "अब क्या करें" : "What to do now"}
+          {language === "hi" ? "अब क्या करें" : "What to do now"}
         </h2>
         <div className="space-y-3">
           {suggestedActions.map((action, index) => (
             <div key={`${action}-${index}`} className="rounded-xl bg-white p-4 border border-[#1B7F3A]/10">
               <div className="text-xs text-[#1B7F3A] mb-1">
-                {language !== "en" ? `सलाह ${index + 1}` : `Tip ${index + 1}`}
+                {language === "hi" ? `सलाह ${index + 1}` : `Tip ${index + 1}`}
               </div>
               <p className="text-gray-700">{action}</p>
             </div>

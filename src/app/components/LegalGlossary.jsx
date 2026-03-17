@@ -21,7 +21,7 @@ export default function LegalGlossary({ externalSearchTerm = "" }) {
       } catch (err) {
         setError(
           err.message ||
-            (language !== "en"
+            (language === "hi"
               ? "कानूनी शब्दावली लोड नहीं हुई।"
               : "Could not load legal glossary.")
         );
@@ -39,10 +39,10 @@ export default function LegalGlossary({ externalSearchTerm = "" }) {
         <BookOpen className="w-8 h-8 text-[#673AB7]" />
         <div>
           <h2 className="text-xl text-gray-900">
-            {language !== "en" ? "कानूनी शब्दावली" : "Legal Glossary"} / कानूनी शब्दावली
+            {language === "hi" ? "कानूनी शब्दावली" : "Legal Glossary"} / कानूनी शब्दावली
           </h2>
           <p className="text-gray-600 mt-1">
-            {language !== "en"
+            {language === "hi"
               ? "आम कानूनी शब्द खोजें (हिंदी अर्थ सहित)।"
               : "Search common legal terms (Hindi meanings included)."}
           </p>
@@ -53,7 +53,7 @@ export default function LegalGlossary({ externalSearchTerm = "" }) {
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder={language !== "en" ? "कोई शब्द खोजें..." : "Search a term..."}
+          placeholder={language === "hi" ? "कोई शब्द खोजें..." : "Search a term..."}
           className="w-full rounded-xl border border-gray-200 px-4 py-3 pr-10 focus:outline-none focus:border-[#673AB7]"
         />
         <Search className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2" />
@@ -61,7 +61,7 @@ export default function LegalGlossary({ externalSearchTerm = "" }) {
 
       {loading && (
         <div className="rounded-xl bg-[#F8FAF9] p-4 text-gray-600">
-          {language !== "en" ? "शब्दावली लोड हो रही है..." : "Loading glossary..."}
+          {language === "hi" ? "शब्दावली लोड हो रही है..." : "Loading glossary..."}
         </div>
       )}
       {error && <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-red-700">{error}</div>}
@@ -78,7 +78,7 @@ export default function LegalGlossary({ externalSearchTerm = "" }) {
         ))}
         {!loading && !terms.length && (
           <div className="rounded-xl bg-[#F8FAF9] p-4 text-gray-600">
-            {language !== "en" ? "इस खोज के लिए कोई शब्द नहीं मिला।" : "No terms found for this search."}
+            {language === "hi" ? "इस खोज के लिए कोई शब्द नहीं मिला।" : "No terms found for this search."}
           </div>
         )}
       </div>

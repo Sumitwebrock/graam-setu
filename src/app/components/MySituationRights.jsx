@@ -120,7 +120,7 @@ export default function MySituationRights({ defaultSituation, recommendedSituati
       try {
         setLoading(true);
         setError("");
-        const data = await fetchSituationRights(selectedSituation);
+        const data = await fetchSituationRights(selectedSituation, language);
         setRightsData(data);
         onSituationChange?.(selectedSituation, data);
       } catch (err) {
@@ -131,7 +131,7 @@ export default function MySituationRights({ defaultSituation, recommendedSituati
     };
 
     loadRights();
-  }, [selectedSituation, onSituationChange]);
+  }, [selectedSituation, language, onSituationChange]);
 
   const filteredSituations = useMemo(() => {
     const query = searchTerm.trim().toLowerCase();
@@ -187,15 +187,15 @@ export default function MySituationRights({ defaultSituation, recommendedSituati
               <h3 className="text-lg text-gray-900 mb-2">
                 {currentSituationMeta.label} / {currentSituationMeta.labelHindi}
               </h3>
-              {language !== "en" && rightsData.title && (
+              {language === "hi" && rightsData.title && (
                 <p className="text-sm text-gray-700 mb-1">{rightsData.title}</p>
               )}
-              <p className="text-gray-800">{language !== "en" ? rightsData.explanationHindi || englishSummary : englishSummary}</p>
+              <p className="text-gray-800">{language === "hi" ? rightsData.explanationHindi || englishSummary : englishSummary}</p>
             </div>
             <div className="rounded-xl bg-white p-4 border border-[#673AB7]/10 mb-4">
               <div className="text-sm text-[#673AB7] mb-1">Your right / आपका अधिकार</div>
               <p className="text-gray-800">
-                {language !== "en" ? rightsData.rightsHindi || englishRight : englishRight}
+                {language === "hi" ? rightsData.rightsHindi || englishRight : englishRight}
               </p>
             </div>
             <div>
@@ -204,7 +204,7 @@ export default function MySituationRights({ defaultSituation, recommendedSituati
                 <span className="text-sm font-medium">What to do / क्या करें</span>
               </div>
               <div className="space-y-3">
-                {(language !== "en" && rightsData.stepsHindi?.length
+                {(language === "hi" && rightsData.stepsHindi?.length
                   ? rightsData.stepsHindi
                   : ENGLISH_STEPS[selectedSituation] || []
                 ).map((step, index) => (
@@ -225,7 +225,7 @@ export default function MySituationRights({ defaultSituation, recommendedSituati
               <span className="text-sm font-medium">Where to complain / कहाँ शिकायत करें</span>
             </div>
             <div className="space-y-3 mb-6">
-              {(language !== "en" && rightsData.complaintWhereHindi?.length
+              {(language === "hi" && rightsData.complaintWhereHindi?.length
                 ? rightsData.complaintWhereHindi
                 : ENGLISH_COMPLAINT_DESTINATIONS[selectedSituation] || []
               ).map((item, index) => (

@@ -18,11 +18,11 @@ export default function LegalChatbot({ profile }) {
 
   const placeholder = useMemo(() => {
     if (profile?.occupation) {
-      return language !== "en"
+      return language === "hi"
         ? `${profile.occupation} के रूप में मेरे क्या अधिकार हैं?`
         : `As a ${profile.occupation}, what are my rights?`;
     }
-    return language !== "en"
+    return language === "hi"
       ? "अगर मुझे कम मजदूरी मिली है तो मेरे क्या अधिकार हैं?"
       : "What are my rights if I was paid less?";
   }, [profile, language]);
@@ -34,13 +34,13 @@ export default function LegalChatbot({ profile }) {
     try {
       setLoading(true);
       setError("");
-      const reply = await askLegalAssistant(finalQuery, language !== "en" ? "hi" : "en");
+      const reply = await askLegalAssistant(finalQuery, language);
       setMessages((prev) => [...prev, { role: "user", text: finalQuery }, { role: "assistant", text: reply.answer }]);
       setQuery("");
     } catch (err) {
       setError(
         err.message ||
-          (language !== "en"
+          (language === "hi"
             ? "अभी जवाब उपलब्ध नहीं है।"
             : "Answer not available right now.")
       );
@@ -55,10 +55,10 @@ export default function LegalChatbot({ profile }) {
         <MessageCircle className="w-8 h-8 text-[#673AB7]" />
         <div>
           <h2 className="text-xl text-gray-900">
-            {language !== "en" ? "कानूनी सहायक" : "Ask Legal Assistant"} / कानूनी सहायक
+            {language === "hi" ? "कानूनी सहायक" : "Ask Legal Assistant"} / कानूनी सहायक
           </h2>
           <p className="text-gray-600 mt-1">
-            {language !== "en"
+            {language === "hi"
               ? "सवाल पूछें और अगला स्पष्ट कदम जानें।"
               : "Ask a question and get clear next steps."}
           </p>
@@ -80,7 +80,7 @@ export default function LegalChatbot({ profile }) {
       <div className="rounded-2xl border border-gray-100 bg-[#F8FAF9] p-4 min-h-[250px] max-h-[340px] overflow-auto mb-4 space-y-3">
         {messages.length === 0 && (
           <div className="text-gray-500">
-            {language !== "en"
+            {language === "hi"
               ? "जवाब पाने के लिए कोई सवाल पूछें।"
               : "Ask a question to get an answer."}
           </div>
@@ -104,8 +104,8 @@ export default function LegalChatbot({ profile }) {
         <button onClick={() => handleAsk()} disabled={loading} className="bg-[#673AB7] text-white px-5 rounded-xl hover:bg-[#5E35B1] transition-all disabled:opacity-60 flex items-center gap-2">
           <Send className="w-4 h-4" />
           {loading
-            ? language !== "en" ? "भेजा जा रहा है" : "Sending"
-            : language !== "en" ? "पूछें" : "Ask"}
+            ? language === "hi" ? "भेजा जा रहा है" : "Sending"
+            : language === "hi" ? "पूछें" : "Ask"}
         </button>
       </div>
     </div>
